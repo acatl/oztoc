@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flexLibProperties includeAllClasses="false" version="1">
+  <includeClasses>
+    <classEntry path="net.oztoc.architecture.bussines.Delegate"/>
+    <classEntry path="net.oztoc.architecture.bussines.IDelegate"/>
+    <classEntry path="net.oztoc.architecture.controller.GestureController"/>
+    <classEntry path="net.oztoc.architecture.gesture.GestureCommand"/>
+    <classEntry path="net.oztoc.architecture.gesture.GestureDispatcher"/>
+    <classEntry path="net.oztoc.architecture.gesture.GestureEvent"/>
+    <classEntry path="net.oztoc.architecture.gesture.IGestureCommand"/>
+    <classEntry path="net.oztoc.architecture.service.AMFService"/>
+    <classEntry path="net.oztoc.architecture.service.Service"/>
+    <classEntry path="net.oztoc.architecture.service.ServiceLocator"/>
+    <classEntry path="net.oztoc.architecture.service.Services"/>
+    <classEntry path="net.oztoc.network.Responder"/>
+    <classEntry path="net.oztoc.remote.AMFConnection"/>
+    <classEntry path="net.oztoc.remote.ErrorInfo"/>
+    <classEntry path="net.oztoc.remote.RemoteObjectWrapper"/>
+    <classEntry path="net.oztoc.utilities.ClassDelegate"/>
+    <classEntry path="net.oztoc.utilities.Configuration"/>
+    <classEntry path="net.oztoc.utilities.LogProcess"/>
+    <classEntry path="net.oztoc.utilities.PropResourceBundle"/>
+    <classEntry path="net.oztoc.utilities.PropertiesLoader"/>
+    <classEntry path="net.oztoc.utilities.data.AbstractConsumer"/>
+    <classEntry path="net.oztoc.utilities.data.Library"/>
+    <classEntry path="net.oztoc.utilities.event.EventDispatcher"/>
+  </includeClasses>
+  <includeResources/>
+  <namespaceManifests/>
+</flexLibProperties>

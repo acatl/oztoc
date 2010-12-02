@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<project name="Oztoc" default="compile" basedir=".">
+
+ <!-- specific directory -->
+ <property name="src.dir" value="${basedir}/src"/>
+ <property name="build.dir" value="${basedir}/bin"/>
+
+ <!-- Load Environment specific properties from properties file -->
+ <property file="${basedir}/build.properties"/>
+
+ <!-- Load the flex tasks for compiling the actionScript code and running flexUnit --> 
+ <path id="antlib">
+   <pathelement location="${basedir}/antlib/flexTasks.jar"/>
+ </path>
+
+ <taskdef name="mxmlc"    classname="flex.ant.MxmlcTask">
+   <classpath refid="antlib"/>
+ </taskdef>
+ <taskdef name="compc"    classname="flex.ant.CompcTask">
+   <classpath refid="antlib"/>
+ </taskdef>
+ <taskdef name="html-wrapper"    classname="flex.ant.HtmlWrapperTask">
+   <classpath refid="antlib"/>
+ </taskdef>
+
+ <!-- Init with echoing some info to the console --> 
+ <target name="init">
+   <tstamp/>
+   <echo message="============================================="/>
+   <echo message="${project.name}-${project.version} [${TODAY}]"/>
+   <echo message="Copyright (c) ${project.year} ${project.owner}"/>
+   <echo message="OS : ${os.name}" />
+   <echo message="Author: ${author}" />
+   <echo message="=============================================="/>
+ </target>
+
+ <!-- Clean output dirs -->  
+ <target name="clean" description="clean all generated files">
+   <delete includeemptydirs="true">
+     <fileset dir="${build.dir}" includes="**/*" />
+   </delete> 
+ </target>  
+
+ <!-- Compile Flex files -->
+ <target name="compile" description="Compile the lib" depends="init">
+
+   <path id="list_1">
+     <fileset dir="${src.dir}">
+       <include name="net/**" />
+     </fileset>
+    </path>
+
+   <pathconvert property="project.classes" pathsep=" "
+                dirsep="." refid="list_1">
+     <map from="${src.dir}/" to="" />
+     <mapper>
+       <chainedmapper>
+         <globmapper from="*.as" to="*" />
+       </chainedmapper>
+     </mapper>
+   </pathconvert>
+
+   <compc 
+      output="${build.dir}/${swc.export}"
+      actionscript-file-encoding="${ENCODING}"
+      keep-generated-actionscript="false"
+      incremental="false"
+      as3="true"
+      context-root="${project.name}"
+      include-classes="${project.classes}"
+      debug="true">
+     <load-config filename="${FLEX_HOME}/frameworks/flex-config.xml"/>
+     <source-path path-element="${src.dir}"/>
+   </compc>
+
+ </target>
+
+</project>
